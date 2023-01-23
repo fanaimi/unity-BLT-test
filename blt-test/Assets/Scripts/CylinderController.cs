@@ -15,8 +15,11 @@ namespace BLTtest
         private float m_horizontalInput;
         private float m_verticalInput;
         
-        [SerializeField] private float m_speed = 20f;
-        [SerializeField] private float m_maxRange = 19.5f;
+        // [SerializeField] 
+        private float m_speed = 10f;
+        [Tooltip("max distance from centre")]
+        [SerializeField] 
+        private float m_maxRange = 19.5f;
 
 
 
@@ -78,6 +81,16 @@ namespace BLTtest
                     m_verticalInput * Time.deltaTime * m_speed
                 )
             );
+        }
+
+        // temp - to be moved and refactored
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Collectibles"))
+            {
+                Destroy(other.gameObject);
+                print("collected");
+            }
         }
 
     }
