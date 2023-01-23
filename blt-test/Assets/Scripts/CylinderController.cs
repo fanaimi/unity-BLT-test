@@ -31,7 +31,7 @@ namespace BLTtest
 
 
         private void MovePlayer()
-        {   
+        {
             // axis
             m_horizontalInput = Input.GetAxis("Horizontal");
             m_verticalInput = Input.GetAxis("Vertical");
@@ -82,16 +82,5 @@ namespace BLTtest
                 )
             );
         }
-
-        // temp - to be moved and refactored
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Collectibles"))
-            {
-                Destroy(other.gameObject);
-                print("collected");
-            }
-        }
-
     }
 }

@@ -17,30 +17,24 @@ namespace BLTtest
     {
 
         [SerializeField] private List<GameObject> m_collectibles;
-        [SerializeField] private List<GameObject> m_pooledCollectibles;
-        [SerializeField] private float m_poolingAmount = 20;
+        [SerializeField] private float m_poolingAmount = 10;
         [SerializeField] private Transform m_pool;
+        private float m_maxRange = 19f;
 
         // Start is called before the first frame update
         void Start()
         {
-            SetUpPool();
+            SpawnCollectible();
         }
 
-        private void SetUpPool()
+        private void SpawnCollectible()
         {
-            m_pooledCollectibles = new List<GameObject>();
-            GameObject tmpGameObject;
-            foreach (var collectible in m_collectibles)
-            {
-                for (int i = 0; i < m_poolingAmount; i++)
-                {
-                    tmpGameObject = Instantiate(collectible, m_pool);
-                    tmpGameObject.SetActive(false);
-                    m_pooledCollectibles.Add(tmpGameObject);
-                }
-            }
-            
+            float randomX = UnityEngine.Random.Range(-m_maxRange, m_maxRange);
+            float randomZ = UnityEngine.Random.Range(-m_maxRange, m_maxRange);
+            Vector3 randomPos = new Vector3(randomX, 1, randomZ);
+
+            int randomIndex = UnityEngine.Random.Range(0, m_collectibles.Count);
+            Instantiate(m_collectibles[randomIndex], randomPos, Quaternion.identity);
         }
 
         // Update is called once per frame

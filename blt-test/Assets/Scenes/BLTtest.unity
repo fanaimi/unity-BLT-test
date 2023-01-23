@@ -123,6 +123,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &71090184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8572946317355582702, guid: 85b08777820028c4385c013ccbce0d3d, type: 3}
+  m_PrefabInstance: {fileID: 8572946318401014311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &71090185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71090184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2d1f6fccfd6a9429b99744687d60ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &115204037
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,8 +233,7 @@ MonoBehaviour:
   m_collectibles:
   - {fileID: 2411353108838875492, guid: ae9205ef09ad48e4f935deee7f3829b2, type: 3}
   - {fileID: 2511223698495680346, guid: 0a333c72aa16be042b26239505641fd9, type: 3}
-  m_pooledCollectibles: []
-  m_poolingAmount: 20
+  m_poolingAmount: 10
   m_pool: {fileID: 157496324}
 --- !u!4 &440477625
 Transform:
@@ -579,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2411353108838875489, guid: ae9205ef09ad48e4f935deee7f3829b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8000005
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2411353108838875489, guid: ae9205ef09ad48e4f935deee7f3829b2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -705,7 +721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572946317355582698, guid: 85b08777820028c4385c013ccbce0d3d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -6.21
       objectReference: {fileID: 0}
     - target: {fileID: 8572946317355582698, guid: 85b08777820028c4385c013ccbce0d3d, type: 3}
       propertyPath: m_LocalRotation.w
