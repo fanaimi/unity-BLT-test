@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,13 +14,14 @@ namespace BLTtest
      */
     public class CylinderCollisionController : MonoBehaviour
     {
+        public event Action OnCollected;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Collectibles"))
             {
                 Destroy(other.gameObject);
-                print("collected");
+                if(OnCollected != null) OnCollected();
             }
         }
 

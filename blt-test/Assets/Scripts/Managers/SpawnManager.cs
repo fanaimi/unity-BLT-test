@@ -15,7 +15,7 @@ namespace BLTtest
 
     public class SpawnManager : MonoBehaviour
     {
-
+        [SerializeField] private CylinderCollisionController m_cylinder;
         [SerializeField] private List<GameObject> m_collectibles;
         [SerializeField] private float m_poolingAmount = 10;
         [SerializeField] private Transform m_pool;
@@ -24,7 +24,14 @@ namespace BLTtest
         // Start is called before the first frame update
         void Start()
         {
+            m_cylinder.OnCollected += SpawnCollectible;
             SpawnCollectible();
+        }
+
+        private void OnDisable()
+        {
+            // unsubscribing
+            m_cylinder.OnCollected += SpawnCollectible;
         }
 
         private void SpawnCollectible()
