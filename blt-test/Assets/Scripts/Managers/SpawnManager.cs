@@ -19,14 +19,22 @@ namespace BLTtest
         [SerializeField] private List<GameObject> m_collectibles;
         [SerializeField] private float m_poolingAmount = 10;
         [SerializeField] private Transform m_pool;
+        [SerializeField] private Transform m_cubeBlock;
         private float m_maxRange = 19f;
+        private float m_cubeSpawnDelay;
 
         // Start is called before the first frame update
         void Start()
         {
+            // observing cylinder, subscription
             m_cylinder.OnCollected += SpawnCollectible;
+            // starting spawning collectibles
             SpawnCollectible();
+            // setting random delay to spawn cubeBlock
+            m_cubeSpawnDelay = UnityEngine.Random.Range(9f, 15f);
+            Invoke("SpawnCubeBlock", m_cubeSpawnDelay);
         }
+
 
         private void OnDisable()
         {
@@ -34,14 +42,25 @@ namespace BLTtest
             m_cylinder.OnCollected += SpawnCollectible;
         }
 
-        private void SpawnCollectible()
+        private Vector3 GetRandomPosition()
         {
             float randomX = UnityEngine.Random.Range(-m_maxRange, m_maxRange);
             float randomZ = UnityEngine.Random.Range(-m_maxRange, m_maxRange);
-            Vector3 randomPos = new Vector3(randomX, 1, randomZ);
+            return new Vector3(randomX, 1, randomZ);
+        }
 
+        private void SpawnCollectible()
+        {
+            Vector3 randomPos = GetRandomPosition();
             int randomIndex = UnityEngine.Random.Range(0, m_collectibles.Count);
             Instantiate(m_collectibles[randomIndex], randomPos, Quaternion.identity);
+        }
+
+        private void SpawnCubeBlock()
+        {
+            Instantiate(m_cubeBlock, GetRandomPosition(), Quaternion.identity);
+            m_cubeSpawnDelay = UnityEngine.Random.Range(3f, 9f);
+            Invoke("SpawnCubeBlock", m_cubeSpawnDelay);
         }
 
         // Update is called once per frame
