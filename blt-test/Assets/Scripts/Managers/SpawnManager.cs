@@ -8,7 +8,7 @@ using UnityEngine;
 namespace BLTtest
 {
     /**
-     * @obj     SpawnManager
+     * @obj     === SpawnManager ===
      * @scene   BLTtest
      * @desc    manages random collectibles using Object Pooling
      */
