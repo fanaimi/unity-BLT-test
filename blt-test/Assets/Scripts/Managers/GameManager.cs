@@ -59,6 +59,7 @@ namespace BLTtest
             public bool m_gameOver = true;
 
             public string m_lastCollected = "nothing";
+            [SerializeField] private Transform m_player;
         #endregion
 
         /// <summary>
@@ -85,6 +86,8 @@ namespace BLTtest
 
             m_uiManager.SetGameOverTitle(msg);
             m_uiManager.ShowGameOverMenu();
+
+            StoreRecords();
         }
 
         /// <summary>
@@ -162,7 +165,6 @@ namespace BLTtest
             if (m_score >= 400)
             {
                 GameOver("YOU WON!");
-                StoreRecords();
             }
             
 
@@ -212,6 +214,34 @@ namespace BLTtest
             if (m_score >= 300 && m_score < 400) m_currentLevel = 4;
 
             m_uiManager.UpdateUiField("level", m_currentLevel.ToString());
+
+            ChangePlayerSize();
         }
+
+        private void ChangePlayerSize() 
+        {
+            float size = 1f;
+            switch (m_currentLevel)
+            {
+                case 1:
+                    size = 1;
+                    break;
+                case 2:
+                    size = 1.4f;
+                    break;
+                case 3:
+                    size = 1.8f;
+                    break;
+                case 4:
+                    size = 2.2f;
+                    break;
+            }
+
+            Vector3 scale = new Vector3(size, size, size);
+
+            m_player.localScale = scale;
+
+        }
+
     }
 }

@@ -23,37 +23,40 @@ namespace BLTtest
         [SerializeField] private TextMeshProUGUI m_timeLeftValue;
         [SerializeField] private TextMeshProUGUI m_gameOverTitle;
 
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        /// <summary>
+        /// showing and hiding menus
+        /// </summary>
         public void ShowGameOverMenu() => m_gameOverMenu.SetActive(true);
         public void ShowMainMenu() => m_mainMenu.SetActive(true);
  
-
         public void HideGameOverMenu() => m_gameOverMenu.SetActive(false);
         public void HideGMainMenu() => m_mainMenu.SetActive(false);
 
 
+        /// <summary>
+        /// shows given message 
+        /// </summary>
+        /// <param name="msg">message to display [win/lose]</param>
         public void SetGameOverTitle(string msg)
         {
             m_gameOverTitle.text = msg;
         }
 
+        /// <summary>
+        /// tells gamemanager to start game, hides main menu
+        /// </summary>
         public void OnStartClicked() 
         {
             GameManager.Instance.StartGame();
             m_mainMenu.SetActive(false);
         }
 
+        /// <summary>
+        /// updated specified text field
+        /// </summary>
+        /// <param name="field">field to update</param>
+        /// <param name="value">value to inject</param>
         public void UpdateUiField(string field, string value)
         {
             switch (field)

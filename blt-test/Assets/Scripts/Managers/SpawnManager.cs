@@ -17,13 +17,14 @@ namespace BLTtest
     {
         [SerializeField] private CylinderCollisionController m_cylinder;
         [SerializeField] private List<GameObject> m_collectibles;
-        [SerializeField] private float m_poolingAmount = 10;
         [SerializeField] private Transform m_pool;
         [SerializeField] private Transform m_cubeBlock;
         private float m_maxRange = 19f;
         private float m_cubeSpawnDelay;
 
-        // Start is called before the first frame update
+        /// <summary>
+        /// spawning random collectibles
+        /// </summary>
         public void StartGameSpawning()
         {
             // observing cylinder, subscription
@@ -36,13 +37,19 @@ namespace BLTtest
             Invoke("SpawnCubeBlock", m_cubeSpawnDelay);
         }
 
-
+        /// <summary>
+        /// unsubscribing from event
+        /// </summary>
         private void OnDisable()
         {
             // unsubscribing
-            m_cylinder.OnCollected += SpawnCollectible;
+            m_cylinder.OnCollected -= SpawnCollectible;
         }
 
+        /// <summary>
+        /// utility methiod to get random position
+        /// </summary>
+        /// <returns>v3 -> random position</returns>
         private Vector3 GetRandomPosition()
         {
             float randomX = UnityEngine.Random.Range(-m_maxRange, m_maxRange);
@@ -50,6 +57,9 @@ namespace BLTtest
             return new Vector3(randomX, 1, randomZ);
         }
 
+        /// <summary>
+        /// spawns a random collectible 
+        /// </summary>
         private void SpawnCollectible()
         {
             if (GameManager.Instance.m_gameOver) return;
@@ -58,13 +68,18 @@ namespace BLTtest
             Instantiate(m_collectibles[randomIndex], randomPos, Quaternion.identity);
         }
 
-
+        /// <summary>
+        /// keeps spawning random collectibles to give better winning chances
+        /// </summary>
         private void SpawnExtraCollectibles()
         {
             float m_extraCollectiblesDelay = UnityEngine.Random.Range(3f, 7f);
             InvokeRepeating("SpawnCollectible", 2, m_extraCollectiblesDelay);
         }
 
+        /// <summary>
+        /// soawns ummovable block
+        /// </summary>
         private void SpawnCubeBlock()
         {
             if (GameManager.Instance.m_gameOver) return;
@@ -73,10 +88,5 @@ namespace BLTtest
             Invoke("SpawnCubeBlock", m_cubeSpawnDelay);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

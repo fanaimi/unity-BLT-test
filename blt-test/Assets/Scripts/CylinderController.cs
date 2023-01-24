@@ -29,7 +29,9 @@ namespace BLTtest
             MovePlayer();
         }
 
-
+        /// <summary>
+        /// movement controller
+        /// </summary>
         private void MovePlayer()
         {
             if (GameManager.Instance.m_gameOver) return;

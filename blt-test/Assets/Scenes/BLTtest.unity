@@ -408,6 +408,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2d1f6fccfd6a9429b99744687d60ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &71090191 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8572946317355582698, guid: 85b08777820028c4385c013ccbce0d3d, type: 3}
+  m_PrefabInstance: {fileID: 8572946318401014311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &74624445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +1040,6 @@ MonoBehaviour:
   m_collectibles:
   - {fileID: 2411353108838875492, guid: ae9205ef09ad48e4f935deee7f3829b2, type: 3}
   - {fileID: 2511223698495680346, guid: 0a333c72aa16be042b26239505641fd9, type: 3}
-  m_poolingAmount: 10
   m_pool: {fileID: 157496324}
   m_cubeBlock: {fileID: 6886066917222795831, guid: c00a2d64a30f5e04bb1251061338e477, type: 3}
 --- !u!4 &440477625
@@ -3184,6 +3188,7 @@ MonoBehaviour:
   m_currentLevel: 0
   m_gameOver: 1
   m_lastCollected: 
+  m_player: {fileID: 71090191}
 --- !u!1001 &8572946318401014311
 PrefabInstance:
   m_ObjectHideFlags: 0

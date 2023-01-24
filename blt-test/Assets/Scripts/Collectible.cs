@@ -18,6 +18,10 @@ namespace BLTtest
 
         [SerializeField] ObjType m_type;
 
+        /// <summary>
+        /// calculates score according to collectible type and current level
+        /// </summary>
+        /// <returns></returns>
         public int CalculateCollectibleScore()
         {
             switch (GameManager.Instance.m_currentLevel)
@@ -48,6 +52,10 @@ namespace BLTtest
             return score;
         }
 
+        /// <summary>
+        /// return collectible type
+        /// </summary>
+        /// <returns>type</returns>
         public new string GetType()
         {
             return m_type.ToString();
