@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 namespace BLTtest
 {
+
+    enum ObjType { Capsule, Sphere }
+
+
     /**
      * @obj     === GameManager ===
      * @scene   BLTtest
@@ -21,10 +25,13 @@ namespace BLTtest
         private int m_score;
         private float m_timeElapsedSecs;
         private int m_collectedItemsNumber;
-        private int m_currentLevel;
+        public int m_currentLevel;
         private float m_timeLeft;
 
         private bool m_isTimerOn = false;
+        public bool m_gameOver = true;
+
+        public string m_lastCollected = "nothing";
 
         private void Awake()
         {
@@ -43,7 +50,6 @@ namespace BLTtest
         } // Awake
 
 
-        public bool m_gameOver = true;
 
         public void StartGame()
         {
@@ -53,10 +59,12 @@ namespace BLTtest
             m_uiManager.HideGameOverMenu();
         }
 
-        public void GameOver()
+        public void GameOver(string msg)
         {
             m_gameOver = true;
             m_isTimerOn = false;
+
+            m_uiManager.SetGameOverTitle(msg);
             m_uiManager.ShowGameOverMenu();
         }
 
@@ -90,12 +98,52 @@ namespace BLTtest
         private void UpdateTimeLeftTimer()
         {
             if (!m_isTimerOn) return;
-            if (m_timeLeft <= 0) GameOver();
+            if (m_timeLeft <= 0) GameOver("GAME OVER");
 
             m_timeLeft -= Time.fixedDeltaTime;
             
             m_uiManager.UpdateUiField("timeLeft", ((int)m_timeLeft).ToString());
 
+        }
+
+
+
+        public void SetScore( int scoreToAdd)
+        {
+            SetCollectedItemsNumber();
+            m_timeLeft = 20;
+            m_score += scoreToAdd;
+            if (m_score >= 400)
+            {
+                GameOver("YOU WON!");
+                StoreRecords();
+            }
+            
+
+            m_uiManager.UpdateUiField("score", m_score.ToString());
+
+            SetLevel();
+        }
+
+        private void StoreRecords()
+        {
+
+        }
+
+        private void SetCollectedItemsNumber()
+        {
+            m_collectedItemsNumber++;
+            m_uiManager.UpdateUiField("collected", m_collectedItemsNumber.ToString());
+        }
+
+        private void SetLevel()
+        {
+            if (m_score < 100) m_currentLevel = 1;
+            if (m_score >= 100 && m_score <200) m_currentLevel = 2;
+            if (m_score >= 200 && m_score < 300) m_currentLevel = 3;
+            if (m_score >= 300 && m_score < 400) m_currentLevel = 4;
+
+            m_uiManager.UpdateUiField("level", m_currentLevel.ToString());
         }
     }
 }

@@ -21,6 +21,7 @@ namespace BLTtest
         [SerializeField] private TextMeshProUGUI m_collectedValue;
         [SerializeField] private TextMeshProUGUI m_levelValue;
         [SerializeField] private TextMeshProUGUI m_timeLeftValue;
+        [SerializeField] private TextMeshProUGUI m_gameOverTitle;
 
         // Start is called before the first frame update
         void Start()
@@ -40,7 +41,12 @@ namespace BLTtest
 
         public void HideGameOverMenu() => m_gameOverMenu.SetActive(false);
         public void HideGMainMenu() => m_mainMenu.SetActive(false);
-       
+
+
+        public void SetGameOverTitle(string msg)
+        {
+            m_gameOverTitle.text = msg;
+        }
 
         public void OnStartClicked() 
         {

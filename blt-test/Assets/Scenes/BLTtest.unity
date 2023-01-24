@@ -1124,7 +1124,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.008, y: 0.2828153}
   m_AnchorMax: {x: 1, y: 0.5588471}
-  m_AnchoredPosition: {x: -11.305603, y: 60}
+  m_AnchoredPosition: {x: -11.305664, y: 60}
   m_SizeDelta: {x: -2.6108398, y: -13.120903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629278931
@@ -2192,6 +2192,7 @@ MonoBehaviour:
   m_collectedValue: {fileID: 1938627506}
   m_levelValue: {fileID: 1790445584}
   m_timeLeftValue: {fileID: 355923857}
+  m_gameOverTitle: {fileID: 2044667787}
 --- !u!1 &1664551005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2948,7 +2949,7 @@ GameObject:
   - component: {fileID: 2044667788}
   - component: {fileID: 2044667787}
   m_Layer: 5
-  m_Name: TitleTxt
+  m_Name: GameOverTitleTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2970,7 +2971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.008, y: 0.2828153}
   m_AnchorMax: {x: 1, y: 0.5588471}
-  m_AnchoredPosition: {x: -11.305603, y: 60}
+  m_AnchoredPosition: {x: -11.305664, y: 60}
   m_SizeDelta: {x: -2.6108398, y: -13.120903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2044667787
@@ -3180,7 +3181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_uiManager: {fileID: 1640688394}
+  m_currentLevel: 0
   m_gameOver: 1
+  m_lastCollected: 
 --- !u!1001 &8572946318401014311
 PrefabInstance:
   m_ObjectHideFlags: 0

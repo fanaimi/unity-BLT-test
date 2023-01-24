@@ -30,6 +30,7 @@ namespace BLTtest
             m_cylinder.OnCollected += SpawnCollectible;
             // starting spawning collectibles
             SpawnCollectible();
+            SpawnExtraCollectibles();
             // setting random delay to spawn cubeBlock
             m_cubeSpawnDelay = UnityEngine.Random.Range(9f, 15f);
             Invoke("SpawnCubeBlock", m_cubeSpawnDelay);
@@ -55,6 +56,13 @@ namespace BLTtest
             Vector3 randomPos = GetRandomPosition();
             int randomIndex = UnityEngine.Random.Range(0, m_collectibles.Count);
             Instantiate(m_collectibles[randomIndex], randomPos, Quaternion.identity);
+        }
+
+
+        private void SpawnExtraCollectibles()
+        {
+            float m_extraCollectiblesDelay = UnityEngine.Random.Range(3f, 7f);
+            InvokeRepeating("SpawnCollectible", 2, m_extraCollectiblesDelay);
         }
 
         private void SpawnCubeBlock()
