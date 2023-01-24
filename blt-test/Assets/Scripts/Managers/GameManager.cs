@@ -29,6 +29,7 @@ namespace BLTtest
         private float m_timeLeft;
 
         private bool m_isTimerOn = false;
+        private bool m_isTimeTrackerOn = false;
         public bool m_gameOver = true;
 
         public string m_lastCollected = "nothing";
@@ -55,6 +56,7 @@ namespace BLTtest
         {
             m_gameOver = false;
             m_isTimerOn = true;
+            m_isTimeTrackerOn = true;
             SetUpStartingUiData();
             m_uiManager.HideGameOverMenu();
         }
@@ -63,6 +65,7 @@ namespace BLTtest
         {
             m_gameOver = true;
             m_isTimerOn = false;
+            m_isTimeTrackerOn = false;
 
             m_uiManager.SetGameOverTitle(msg);
             m_uiManager.ShowGameOverMenu();
@@ -93,6 +96,19 @@ namespace BLTtest
         void FixedUpdate()
         {
             UpdateTimeLeftTimer();
+            UpdateTimeTracker();
+        }
+
+        private void UpdateTimeTracker()
+        {
+            if (!m_isTimeTrackerOn) return;
+            m_timeElapsedSecs += Time.fixedDeltaTime;
+
+            float minutes = Mathf.FloorToInt(m_timeElapsedSecs / 60);
+            float seconds = Mathf.FloorToInt(m_timeElapsedSecs % 60);
+
+            // m_uiManager.UpdateUiField("time", m_timeElapsedSecs.ToString());
+            m_uiManager.UpdateUiField("time", string.Format("{0:00}:{1:00}", minutes, seconds));
         }
 
         private void UpdateTimeLeftTimer()
