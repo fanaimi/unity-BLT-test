@@ -12,6 +12,9 @@ namespace BLTtest
      */
     public class UiManager : MonoBehaviour
     {
+
+        [SerializeField] private GameObject m_mainMenu;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -22,6 +25,13 @@ namespace BLTtest
         void Update()
         {
 
+        }
+
+
+        public void OnStartClicked() 
+        {
+            GameManager.Instance.m_gameOver = false;
+            m_mainMenu.SetActive(false);
         }
     }
 }

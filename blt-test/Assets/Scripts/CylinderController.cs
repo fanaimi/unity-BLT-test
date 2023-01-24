@@ -32,6 +32,7 @@ namespace BLTtest
 
         private void MovePlayer()
         {
+            if (GameManager.Instance.m_gameOver) return;
             // axis
             m_horizontalInput = Input.GetAxis("Horizontal");
             m_verticalInput = Input.GetAxis("Vertical");
