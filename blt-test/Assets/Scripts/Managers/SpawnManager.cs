@@ -24,7 +24,7 @@ namespace BLTtest
         private float m_cubeSpawnDelay;
 
         // Start is called before the first frame update
-        void Start()
+        public void StartGameSpawning()
         {
             // observing cylinder, subscription
             m_cylinder.OnCollected += SpawnCollectible;
@@ -51,6 +51,7 @@ namespace BLTtest
 
         private void SpawnCollectible()
         {
+            if (GameManager.Instance.m_gameOver) return;
             Vector3 randomPos = GetRandomPosition();
             int randomIndex = UnityEngine.Random.Range(0, m_collectibles.Count);
             Instantiate(m_collectibles[randomIndex], randomPos, Quaternion.identity);
@@ -58,6 +59,7 @@ namespace BLTtest
 
         private void SpawnCubeBlock()
         {
+            if (GameManager.Instance.m_gameOver) return;
             Instantiate(m_cubeBlock, GetRandomPosition(), Quaternion.identity);
             m_cubeSpawnDelay = UnityEngine.Random.Range(3f, 9f);
             Invoke("SpawnCubeBlock", m_cubeSpawnDelay);
