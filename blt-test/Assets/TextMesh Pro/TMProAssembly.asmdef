@@ -1,9 +1,7 @@
 {
-    "name": "MainAssembly",
+    "name": "TMProAssembly",
     "rootNamespace": "",
-    "references": [
-        "GUID:aa0b0cbd786bb6a41a645d5f64ba47c2"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
