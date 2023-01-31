@@ -12,16 +12,16 @@ namespace BLTtest
 
     public class CylinderController : MonoBehaviour
     {
-        private float m_horizontalInput;
-        private float m_verticalInput;
+        public float m_horizontalInput;
+        public float m_verticalInput;
         
         // [SerializeField] 
-        private float m_speed = 10f;
+        public float m_speed = 10f;
         [Tooltip("max distance from centre")]
         [SerializeField] 
         private float m_maxRange = 19.5f;
 
-
+        public Vector3 newPos;
 
         // Update is called once per frame
         void Update()
@@ -75,15 +75,14 @@ namespace BLTtest
                 );
             }
 
-
-            // movements
-            transform.Translate(
-                new Vector3(
+             newPos = new Vector3(
                     m_horizontalInput * Time.deltaTime * m_speed,
                     0f,
                     m_verticalInput * Time.deltaTime * m_speed
-                )
-            );
+                );
+
+            // movements
+            transform.Translate(newPos);
         }
     }
 }
